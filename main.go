@@ -8,67 +8,61 @@ import (
 
 func main() {
 
-	fmt.Println("--- Calculator ---")
-
+	fmt.Println("--Calculator--")
 	for {
 
 		var input1 string
-		fmt.Printf("\nQ to exit\nEnter value:")
+		fmt.Print("\npress Q to exit \nEnter number :")
 		fmt.Scanln(&input1)
-
 		switch input1 {
 		case "Q", "q":
 			return
 		}
-
 		in1, err := strconv.ParseFloat(input1, 64)
 		if err != nil {
-			fmt.Println("\nMust be numeric number")
+			fmt.Println("\nMust be number")
 			continue
 		}
 
-		fmt.Printf("\n----Choose operator----")
-
 		var operator string
-		fmt.Println("\n1: +")
-		fmt.Println("2: -")
-		fmt.Println("3: *")
-		fmt.Println("4: /")
+		fmt.Println("\nChoose operator")
+		fmt.Println("\n+")
+		fmt.Println("-")
+		fmt.Println("*")
+		fmt.Println("/")
+		fmt.Print("Enter operator:")
 		fmt.Scanln(&operator)
-
 		switch operator {
 		case "+", "-", "*", "/":
-
 		default:
-			fmt.Println("\nInvalid option enter (+,-,*,/)")
+			fmt.Println("\nInvalid operator")
 			continue
 		}
 
 		var input2 string
-		fmt.Printf("Enter value:")
+		fmt.Print("Enter number:")
 		fmt.Scanln(&input2)
 
 		in2, err := strconv.ParseFloat(input2, 64)
 		if err != nil {
-			fmt.Println("Must be number:", err)
-			continue
+			fmt.Println("Must be number")
 		}
 
 		switch operator {
-
 		case "+":
-			fmt.Printf("Result: %.2f", logics.Sum(in1, in2))
+			fmt.Printf("\nResult:%.2f", logics.Add(in1, in2))
+
 		case "-":
-			fmt.Printf("Result: %.2f", logics.Sub(in1, in2))
+			fmt.Printf("\nResult:%.2f", logics.Sub(in1, in2))
 		case "*":
-			fmt.Printf("Result: %.2f", logics.Mul(in1, in2))
+			fmt.Printf("\nResult:%.2f", logics.Mul(in1, in2))
 		case "/":
-			result, err := logics.Div(in1, in2)
+			res, err := logics.Div(in1, in2)
 			if err != nil {
-				fmt.Println(err)
+				fmt.Print(err)
 				continue
 			}
-			fmt.Printf("\nResult: %.2f", result)
+			fmt.Printf("Result:%.2f", res)
 		}
 
 	}

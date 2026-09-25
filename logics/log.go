@@ -1,23 +1,21 @@
 package logics
 
-import (
-	"errors"
-)
+import "errors"
 
-func Sum(i1, i2 float64) float64 {
-	return i1 + i2
+func Add(a, b float64) float64 {
+	return a + b
+}
+func Sub(a, b float64) float64 {
+	return a - b
 }
 
-func Sub(i1, i2 float64) float64 {
-	return i1 - i2
+func Mul(a, b float64) float64 {
+	return a * b
 }
-func Mul(i1, i2 float64) float64 {
-	return i1 * i2
-}
-func Div(i1, i2 float64) (float64, error) {
-	if i2 == 0 {
 
-		return i2, errors.New("\nInvalid operation")
+func Div(a, b float64) (float64, error) {
+	if b == 0 {
+		return 0, errors.New("\nCant divide with 0\n")
 	}
-	return i1 / i2, nil
+	return a / b, nil
 }
