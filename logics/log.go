@@ -11,13 +11,13 @@ func Sum(i1, i2 int) int {
 func Sub(i1, i2 int) int {
 	return i1 - i2
 }
-func Add(i1, i2 int) int {
+func Mul(i1, i2 int) int {
 	return i1 * i2
 }
 func Div(i1, i2 int) (int, error) {
 	if i2 == 0 {
 
-		return i2, errors.New("Invalid syntex")
+		return i2, errors.New("Invalid operation")
 	}
 	return i1 / i2, nil
 }

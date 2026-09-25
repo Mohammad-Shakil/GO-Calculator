@@ -1,6 +1,7 @@
 package main
 
 import (
+	"calcu/logics"
 	"fmt"
 	"strconv"
 )
@@ -20,9 +21,9 @@ func main() {
 			return
 		}
 
-		_, err := strconv.Atoi(input1)
+		in1, err := strconv.Atoi(input1)
 		if err != nil {
-			fmt.Println("\nMust be numeric number")
+			fmt.Println("\nMust be numeric number:", err)
 			continue
 		}
 
@@ -46,6 +47,28 @@ func main() {
 		var input2 string
 		fmt.Printf("Enter value:")
 		fmt.Scanln(&input2)
+
+		in2, err := strconv.Atoi(input2)
+		if err != nil {
+			fmt.Println("Must be number:", err)
+			continue
+		}
+
+		switch operator {
+
+		case "1":
+			fmt.Println("Result:", logics.Add(in1, in2))
+		case "2":
+			fmt.Println("Result:", logics.Sub(in1, in2))
+		case "3":
+			fmt.Println("Result:", logics.Mul(in1, in2))
+		case "4":
+			result, err := logics.Div(in1, in2)
+			if err != nil {
+				fmt.Println(err)
+			}
+			fmt.Println("Result:", result)
+		}
 
 	}
 }
