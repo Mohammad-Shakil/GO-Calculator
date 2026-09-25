@@ -1,8 +1,8 @@
 package main
 
 import (
-	"calcu/logics"
 	"fmt"
+	"strconv"
 )
 
 func main() {
@@ -12,10 +12,19 @@ func main() {
 	for {
 
 		var input1 string
-		fmt.Printf("Q to exit\n Enter value:")
+		fmt.Printf("\nQ to exit\nEnter value:")
 		fmt.Scanln(&input1)
 
-		logics.Checker(input1)
+		switch input1 {
+		case "Q", "q":
+			return
+		}
+
+		_, err := strconv.Atoi(input1)
+		if err != nil {
+			fmt.Println("\nMust be numeric number")
+			continue
+		}
 
 		fmt.Printf("\n----Choose operator----")
 
@@ -25,6 +34,14 @@ func main() {
 		fmt.Println("3: *")
 		fmt.Println("4: /")
 		fmt.Scanln(&operator)
+
+		switch operator {
+		case "1", "2", "3", "4":
+
+		default:
+			fmt.Println("\nInvalid option:", operator)
+			continue
+		}
 
 		var input2 string
 		fmt.Printf("Enter value:")
