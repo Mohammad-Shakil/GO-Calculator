@@ -21,9 +21,9 @@ func main() {
 			return
 		}
 
-		in1, err := strconv.Atoi(input1)
+		in1, err := strconv.ParseFloat(input1, 64)
 		if err != nil {
-			fmt.Println("\nMust be numeric number:", err)
+			fmt.Println("\nMust be numeric number")
 			continue
 		}
 
@@ -37,10 +37,10 @@ func main() {
 		fmt.Scanln(&operator)
 
 		switch operator {
-		case "1", "2", "3", "4":
+		case "+", "-", "*", "/":
 
 		default:
-			fmt.Println("\nInvalid option:", operator)
+			fmt.Println("\nInvalid option enter (+,-,*,/)")
 			continue
 		}
 
@@ -48,7 +48,7 @@ func main() {
 		fmt.Printf("Enter value:")
 		fmt.Scanln(&input2)
 
-		in2, err := strconv.Atoi(input2)
+		in2, err := strconv.ParseFloat(input2, 64)
 		if err != nil {
 			fmt.Println("Must be number:", err)
 			continue
@@ -56,18 +56,19 @@ func main() {
 
 		switch operator {
 
-		case "1":
-			fmt.Println("Result:", logics.Sum(in1, in2))
-		case "2":
-			fmt.Println("Result:", logics.Sub(in1, in2))
-		case "3":
-			fmt.Println("Result:", logics.Mul(in1, in2))
-		case "4":
+		case "+":
+			fmt.Printf("Result: %.2f", logics.Sum(in1, in2))
+		case "-":
+			fmt.Printf("Result: %.2f", logics.Sub(in1, in2))
+		case "*":
+			fmt.Printf("Result: %.2f", logics.Mul(in1, in2))
+		case "/":
 			result, err := logics.Div(in1, in2)
 			if err != nil {
 				fmt.Println(err)
+				continue
 			}
-			fmt.Println("Result:", result)
+			fmt.Printf("\nResult: %.2f", result)
 		}
 
 	}
