@@ -57,7 +57,7 @@ func main() {
 		switch operator {
 
 		case "1":
-			fmt.Println("Result:", logics.Add(in1, in2))
+			fmt.Println("Result:", logics.Sum(in1, in2))
 		case "2":
 			fmt.Println("Result:", logics.Sub(in1, in2))
 		case "3":
